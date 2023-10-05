@@ -1,5 +1,9 @@
 #include <stdio.h>
-/* this is a c file to print without using print f */
+/**
+ * main, to print the phrase \"Programing is like building
+ * a multilingual puzzle, without using printf
+ * return 0 if the program run properly
+ */
 int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle");
