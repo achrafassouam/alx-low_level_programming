@@ -2,18 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * File: 0-positive_or_negative.c
- *
- * Author: Achraf Assouam
- *
- * Date: 6th October 2023
- *
- * main - generate randome numbers and give them a sign
- *
- * Description: Print Positive, Zero or Negative
- *              Depending on the number generated.
- *
- * return: 0 if everying run correctly
+ * main - generate a random and and print it with it sign
+ * Return: print 0 when success
  */
 int main(void)
 {
