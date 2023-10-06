@@ -6,22 +6,21 @@
  */
 int main(void)
 {
-	char lowercaseletters = 'a';
+	char Letters = 'a';
 
 	while
-	(lowercaseletters <= 'z')
+	(Letters <= 'z')
 	{
-		putchar(lowercaseletters);
-		lowercaseletters++;
+		putchar(Letters);
+		Letters++;
 	}
-
-	char uppercareletters = 'A';
+	Letters = 'A';
 
 	while
-	(uppercareletters <= 'Z')
+	(Letters <= 'Z')
 	{
-		putchar(uppercareletters);
-		uppercareletters++;
+		putchar(Letters);
+		Letters++;
 	}
 
 	putchar('\n');
