@@ -3,7 +3,7 @@
  * print_alphabet_x10 - orint alphabet 10 times
  * Return: 0 on success
  */
-print_alphabet_x10(void)
+void print_alphabet_x10(void)
 {
 	int i = 0;
 
