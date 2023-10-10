@@ -1,7 +1,6 @@
 #include "main.h"
 /**
- * main - ..
- *
+ * print_alphabet - print alphabet in lowecare
  * Return: 0 on success
  */
 
