@@ -4,7 +4,7 @@
  * @c: The character to print
  * Return: 1 if correct, 0 otherwise
 */
-int _isalpha(int c);
+int _isalpha(int c)
 {
 	char c = 'a'
 
