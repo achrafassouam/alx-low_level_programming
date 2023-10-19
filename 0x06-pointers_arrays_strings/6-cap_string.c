@@ -19,7 +19,7 @@ char *cap_string(char *c)
 	{
 		j = 0;
 
-		while (c[j] == sep[j])
+		while (sep[j] != '\0')
 		{
 			if (c[i - 1] == sep[j] && (c[i] >= 'a' && c[i] <= 'z'))
 			{
