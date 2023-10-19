@@ -11,6 +11,10 @@ char *cap_string(char *c)
 
 	i = 1;
 
+	if (c[0] >= 'a' && c[0] <= 'z')
+	{
+		c[0] -= 'a' - 'A';
+	}
 	while (c[i] != '\0')
 	{
 		j = 0;
