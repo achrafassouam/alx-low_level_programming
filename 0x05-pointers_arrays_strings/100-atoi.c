@@ -2,6 +2,7 @@
 /**
  * _atoi - convert a string to an integer
  * @s: char type pointer
+ * Return: res
  */
 
 int _atoi(char *s)
@@ -10,7 +11,7 @@ int _atoi(char *s)
 
 	i = res = j = 0;
 	k = -1;
-    for (k = -1; s[i] != '\0'; i++)
+	for (k = -1; s[i] != '\0'; i++)
 	{
 		if (s[i] == '-')
 			k = k * -1;
