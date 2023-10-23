@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "main.h"
+#include <stdio.h>
 /**
  * _strstr - locates a substring
  * @haystack: char type pointer
@@ -8,25 +8,24 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	while (*haystack != '\0')
+	int i, j;
+
+	i = 0;
+
+	while (haystack[i] != '\0')
 	{
-		if (*haystack == *needle)
+		j = 0;
+
+		while (needle[j] != '\0')
 		{
-			char *c = haystack;
-			char *d = needle;
-
-			while (*d != '\0' && *c == *d)
-			{
-				c++;
-				d++;
-			}
-			if (*d == '\0')
-			{
-				return ((char *) haystack);
-			}
-
+			if (haystack[i + j] != needle[j])
+				break;
+			j++;
 		}
-		haystack++;
+		if (!needle[j])
+			return (&haystack[i]);
+		j = 0;
+		i++;
 	}
 	return (NULL);
 }
