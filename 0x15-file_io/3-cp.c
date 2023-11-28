@@ -1,7 +1,11 @@
 #include "main.h"
 #include <stdio.h>
-#define BUFFER_S 1024
-#define ERR_WRT "Error: Can't write to destination file %s\n"
+
+#define E_USSAGE "Usage: cp file_from file_to\n"
+#define E_READ "Error: Can't read from file %s\n"
+#define E_WRITE "Error: Can't write to %s\n"
+#define E_CLOSE "Error: Can't close fd %d\n"
+
 void copy_file(const char *file_from, const char *file_to);
 /**
  * main - check argument count
@@ -30,47 +34,43 @@ int main(int argc, char **argv)
   */
 void copy_file(const char *file_from, const char *file_to)
 {
-	int old_file, dest_file;
-	ssize_t bRead, bsWrite;
-	char buffer[BUFFER_S];
+	int ofile, tfile, rfile;
+	char buff[1024];
 
-	old_file = open(file_from, O_RDONLY);
-	if (!file_from || old_file == -1)
+	ofile = open(file_from, O_RDONLY);
+
+	if (!file_from || ofile == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+		dprintf(STDERR_FILENO, E_READ, file_from);
 		exit(98);
 	}
 
-	dest_file = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (dest_file == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		close(old_file);
-		exit(99);
-	}
+	tfile = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
-	while ((bRead = read(old_file, buffer, BUFFER_S)) > 0)
+	while ((rfile = read(ofile, buff, 1024)) > 0)
 	{
-		bsWrite = write(dest_file, buffer, bRead);
-		if (bsWrite != bRead || bsWrite == -1)
+		if (write(tfile, buff, rfile) != rfile || tfile == -1)
 		{
-			dprintf(STDERR_FILENO, ERR_WRT, file_to);
-			close(old_file);
-			close(dest_file);
+			dprintf(STDERR_FILENO, E_WRITE, file_to);
 			exit(99);
 		}
 	}
 
-	if (bRead == -1)
+	if (rfile == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from source file %s\n", file_from);
-		close(old_file);
-		close(dest_file);
+		dprintf(STDERR_FILENO, E_READ, file_from);
 		exit(98);
 	}
-	if (close(old_file) == -1 || close(dest_file) == -1)
+
+	if (close(ofile) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close file descriptor\n");
+		dprintf(STDERR_FILENO, E_CLOSE, ofile);
+		exit(100);
+	}
+
+	if (close(tfile) == -1)
+	{
+		dprintf(STDERR_FILENO, E_CLOSE, tfile);
 		exit(100);
 	}
 }
