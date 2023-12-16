@@ -35,7 +35,7 @@ int check_palindrome(char *s, int i, int len)
 }
 
 /**
- * is_palindrom - Checks if a string is a palindrome
+ * is_palindrome - Checks if a string is a palindrome
  * @s: The string to check
  *
  * Return: check_palindrome
