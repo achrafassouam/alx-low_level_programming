@@ -31,7 +31,7 @@ int check_palindrome(char *s, int i, int len)
 	if (s[i] != s[len - i - 1])
 		return (0);
 
-	return (check_palindrome(s, i+1, len));
+	return (check_palindrome(s, i + 1, len));
 }
 
 /**
