@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
+
 /**
  * struct dlistint_s - doubly linked list
  * @n: integer
@@ -21,6 +23,7 @@ typedef struct dlistint_s
 
 size_t print_dlistint(const dlistint_t *h);
 size_t dlistint_len(const dlistint_t *h);
+dlistint_t *add_dnodeint(dlistint_t **head, const int n);
 
 
 
