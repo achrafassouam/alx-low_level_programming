@@ -1,0 +1,26 @@
+# the compiler to be used
+CC = gcc
+
+# the .c files
+SRC = main.c school.c
+
+# the .o files
+OBJ = $(SRC:.c=.o) 
+
+# the name of the executable
+NAME = school
+
+.PHONY: all clean oclean fclean re
+
+all: m.h $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
